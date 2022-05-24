@@ -2,11 +2,14 @@
 
 require("dotenv").config();
 const express = require('express');
+const trace = require('./helper');
 
 const app = express();
 
+app.use('/places', require('./controllers/places'));
+
 app.get('/', (req, res) => {
-   const name = 'REST-Rant homepage';
+   const name = '/';
    res.status(404).send(`
       <body>
          <h1>${name}</h1>
@@ -28,12 +31,3 @@ app.get('*', (req, res) => {
 app.listen(3333, () => {
    trace('Server listening | PORT')(process.env.PORT);
 });
-
-/*
-//    HELPER
-*/
-
-const trace = label => value => {
-   console.log(`${label} --> ${value}`);
-   return value;
-};
