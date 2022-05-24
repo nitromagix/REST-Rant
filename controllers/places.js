@@ -1,15 +1,12 @@
 'use strict';
 
 const router = require('express').Router()
-const trace = require('../helper');
+const {trace} = require('../helper');
+const {stub} = require('../helper');
 
 router.get('/', (req, res) => {
    const name = '/places';
-   res.send(`
-      <body>
-         <h1>${name}</h1>
-      </body>
-   `)
+   res.send(stub(name))
    trace('page served (GET)')(name);
 });
 

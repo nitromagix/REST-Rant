@@ -2,7 +2,8 @@
 
 require("dotenv").config();
 const express = require('express');
-const trace = require('./helper');
+const {trace} = require('./helper');
+const {stub} = require('./helper');
 
 const app = express();
 
@@ -10,21 +11,13 @@ app.use('/places', require('./controllers/places'));
 
 app.get('/', (req, res) => {
    const name = '/';
-   res.status(404).send(`
-      <body>
-         <h1>${name}</h1>
-      </body>
-   `)
+   res.send(stub(name))
    trace('page served (GET)')(name);
 });
 
 app.get('*', (req, res) => {
    const name = '404';
-   res.send(`
-      <body>
-         <h1>${name}</h1>
-      </body>
-   `)
+   res.status(404).send(stub(name))
    trace('page served (GET)')(name);
 });
 
