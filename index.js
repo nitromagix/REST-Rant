@@ -7,6 +7,16 @@ const app = express();
 
 app.get('/', (req, res) => {
    const name = 'REST-Rant homepage';
+   res.status(404).send(`
+      <body>
+         <h1>${name}</h1>
+      </body>
+   `)
+   trace('page served (GET)')(name);
+});
+
+app.get('*', (req, res) => {
+   const name = '404';
    res.send(`
       <body>
          <h1>${name}</h1>
