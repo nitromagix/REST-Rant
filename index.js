@@ -10,15 +10,22 @@ const app = express();
 app.use('/places', require('./controllers/places'));
 
 app.get('/', (req, res) => {
-   const name = '/';
-   res.send(stub(name))
-   trace('page served (GET)')(name);
+   const route = '/ (GET)';
+   trace(route)(req.params);
+   
+   res.send(stub(route))
+
 });
 
 app.get('*', (req, res) => {
-   const name = '404';
-   res.status(404).send(stub(name))
-   trace('page served (GET)')(name);
+   const route = '404 (GET)'
+   const params = req.params;
+   const query = req.query;
+   trace(route)('');
+   trace(' | params')(params);
+   trace(' | query')(query);
+
+   res.status(404).send(stub(route))
 });
 
 app.listen(3333, () => {
