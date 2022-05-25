@@ -1,8 +1,7 @@
 'use strict';
 
 const router = require('express').Router()
-const {trace} = require('../helper');
-const {stub} = require('../helper');
+const {trace, stub} = require('../helper');
 
 router.get('/', (req, res) => {
    const route = '/places (GET)';
