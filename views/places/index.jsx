@@ -5,9 +5,12 @@ const {trace} = require('../../helper');
 const Def = require('../default');
 
 function index(data) {
+   
    trace('index.jsx . index(data) ... data')(data);
-   const places = [data[0], data[1]];
+   trace(' | data.places')(data.places);
+   const places = [data[0], data[1]]; // how the activity showed to get the data did not work. data is NOT iterable. came up with a temp work around. ask Aram on Thurs.
    trace(' | places')(places);
+
    const placesFormatted = places.map((place) => {
       return (
          <div>
