@@ -2,9 +2,13 @@
 
 require("dotenv").config();
 const express = require('express');
+const expressReactViews = require('express-react-views').createEngine();
 const {trace, stub} = require('./helper');
 
 const app = express();
+
+app.set('view engine', 'jsx')
+app.engine('jsx', expressReactViews)
 
 app.use('/places', require('./controllers/places'));
 
@@ -12,7 +16,8 @@ app.get('/', (req, res) => {
    const route = '/ (GET)';
    trace(route)(req.params);
    
-   res.send(stub(route))
+   // res.send(stub(route));
+   res.render('home');
 
 });
 
