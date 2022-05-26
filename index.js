@@ -29,7 +29,8 @@ app.get('*', (req, res) => {
    trace(' | params')(params);
    trace(' | query')(query);
 
-   res.status(404).send(stub(route))
+   // res.status(404).send(stub(route));
+   res.render('error404');
 });
 
 app.listen(3333, () => {
