@@ -1,13 +1,33 @@
 'use strict';
 
 const router = require('express').Router()
-const {trace, stub} = require('../helper');
+const {
+   trace,
+   stub
+} = require('../helper');
 
 router.get('/', (req, res) => {
+
+   const places = [{
+      name: 'H-Thai-ML',
+      city: 'Seattle',
+      state: 'WA',
+      cuisines: 'Thai, Pan-Asian',
+      pic: 'http://placekitten.com/250/250'
+   }, {
+      name: 'Coding Cat Cafe',
+      city: 'Phoenix',
+      state: 'AZ',
+      cuisines: 'Coffee, Bakery',
+      pic: 'http://placekitten.com/250/250'
+   }]
+
+
    const route = '/places (GET)';
    trace(route)(req.params);
 
-   res.send(stub(route))
+   // res.send(stub(route));
+   res.render('places/index.jsx', places)
 });
 
 router.post('/', (req, res) => {
