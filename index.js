@@ -36,7 +36,7 @@ app.get('*', (req, res) => {
    trace(' | params')(params);
    trace(' | query')(query);
 
-   // res.status(404).send(stub(route));
+   // res.render('error404', {params: params});
    res.render('error404');
 });
 

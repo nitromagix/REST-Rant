@@ -7,3 +7,23 @@ h1 {
    color: cornflowerblue;
  }
  
+ .banner img {
+   display: block;
+   height: 400px;
+ }
+
+ .banner span, .place span {
+    display: block;
+ }
+
+ .place img {
+   display: inline-block;
+   height: 300px;
+ }
+
+ .thumb1 { 
+   background: 50% 50% no-repeat; /* 50% 50% centers image in div */
+   width: 250px;
+   height: 250px;
+ }
+ 

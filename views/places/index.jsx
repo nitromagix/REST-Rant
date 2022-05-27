@@ -1,7 +1,7 @@
 'use strict';
 
 const React = require('react');
-const {trace} = require('../../helper');
+const { trace } = require('../../helper');
 const Default = require('../default');
 
 function index(data) {
@@ -12,25 +12,37 @@ function index(data) {
 
    const placesFormatted = places.map((place) => {
       return (
-         <div>
-            <h3>{place.name}</h3>
-            <img src={place.pic} alt={place.name}></img>
-            <h4>City: {place.city}</h4>
-            <h4>State: {place.state}</h4>
-            <h4>Cuisines: {place.cuisines}</h4>
+         <div className='col-sm-6 place'>
+            <hr />
+            <h3 className='text-center'>{place.name}</h3>
+            <div className='text-center'>
+               <img src={place.pic} alt={place.name}></img>
+               <span><sup>{place.picCredit}</sup></span>
+            </div>
+            <div class="thumb1" style="background='url(blah.jpg)'">
+            </div>   
+            
+            <ul className='text-center'>
+            <li>City: {place.city}</li>
+            <li>State: {place.state}</li>
+            <li>Cuisines: {place.cuisines}</li>
+            </ul>
+            <hr />
          </div>
       )
    });
    return (
       <Default>
-          <main>
-              <h2>PLACES</h2>
-              {placesFormatted}
-          </main>
+         <main>
+            <h2 className='text-center'>PLACES</h2>
+            <div className='row'>
+               {placesFormatted}
+            </div>
+         </main>
       </Default>
-  )
+   )
 }
 
- 
+
 
 module.exports = index;

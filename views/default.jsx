@@ -11,7 +11,7 @@ function Default(html) {
             <link rel="stylesheet" href='/css/style.css'></link>
          </head>
          <body>
-            <h1>REST-Rant</h1>
+            <h1><a href='/'>REST-Rant</a></h1>
             {html.children}
          </body>
       </html>
