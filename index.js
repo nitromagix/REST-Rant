@@ -3,19 +3,26 @@
 require("dotenv").config();
 const express = require('express');
 const expressReactViews = require('express-react-views').createEngine();
-const {trace, stub} = require('./helper');
+const {
+   trace,
+   stub
+} = require('./helper');
 
 const app = express();
 
-app.set('view engine', 'jsx')
-app.engine('jsx', expressReactViews)
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', expressReactViews);
 
+app.use(express.static('public'))
+
+// Controllers and Routes
 app.use('/places', require('./controllers/places'));
 
 app.get('/', (req, res) => {
    const route = '/ (GET)';
    trace(route)(req.params);
-   
+
    // res.send(stub(route));
    res.render('home');
 
@@ -33,6 +40,6 @@ app.get('*', (req, res) => {
    res.render('error404');
 });
 
-app.listen(3333, () => {
+app.listen(process.env.PORT, () => {
    trace('Server listening | PORT')(process.env.PORT);
 });
