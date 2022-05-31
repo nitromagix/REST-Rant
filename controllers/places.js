@@ -43,7 +43,8 @@ router.get('/new', (req, res) => {
    const route = '/places/new (GET)';
    trace(route)(req.params);
 
-   res.send(stub(route))
+   // res.send(stub(route))
+   res.render('places/new.jsx')
 });
 
 router.get('/:id', (req, res) => {

@@ -20,8 +20,7 @@ function index(data) {
                <img src={place.pic} alt={place.name}></img>
                <span><sup>{place.picCredit}</sup></span>
             </div>
-            <div class="thumb1" style="background='url(blah.jpg)'">
-            </div>   
+            {/* <div className="thumb1" style={{background:'url(' + place.pic + ')'}}></div>    */}
             
             <ul className='text-center'>
             <li>City: {place.city}</li>

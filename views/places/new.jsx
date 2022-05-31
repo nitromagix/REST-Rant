@@ -5,7 +5,7 @@ const Def = require('../default');
 
 const { trace } = require('../../helper');
 
-function new_form () {
+function newPlace() {
     return (
         <Def>
           <main>
@@ -15,4 +15,4 @@ function new_form () {
     )
 }
 
-module.exports = new_form
+module.exports = newPlace
