@@ -1,8 +1,9 @@
 'use strict';
 
 const React = require('react');
-const { trace } = require('../../helper');
 const Default = require('../default');
+
+const { trace } = require('../../helper');
 
 function index(data) {
    trace('index.jsx . index(data) ... data')(data);
