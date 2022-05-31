@@ -6,9 +6,14 @@ const Default = require('../default');
 const { trace } = require('../../helper');
 
 function index(data) {
-   trace('index.jsx . index(data) ... data')(data);
-   // trace(' | data.places')(data.places); // how the activity showed to get the data did not work. data.places does NOT exist (undefined)
-   const places = [data[0], data[1]];    // AND data is NOT iterable. came up with a temp work around. ask Aram on Thurs.
+
+   // how the activity showed to get the data did not work. data.places does NOT exist (undefined)
+   // AND data is NOT iterable. came up with a temp work around. ask Aram on Thurs.
+
+   console.log(data);
+
+   const places = [data[0], data[1]];    
+
    // trace(' | places')(places);
 
    const placesFormatted = places.map((place) => {

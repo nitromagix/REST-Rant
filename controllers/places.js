@@ -1,25 +1,15 @@
 'use strict';
 
-const router = require('express').Router()
-const { trace, stub } = require('../helper');
+const router = require('express').Router();
+const places = require('../models/places');
 
-const places = [{
-   name: 'H-Thai-ML',
-   city: 'Seattle',
-   state: 'WA',
-   cuisines: 'Thai, Pan-Asian',
-   pic: '/images/taylor-kiser-6RJct18G_3I-unsplash.jpg',
-   picCredit: 'Photo by Taylor Kiser at unsplash.com',
-}, {
-   name: 'Coding Cat Cafe',
-   city: 'Phoenix',
-   state: 'AZ',
-   cuisines: 'Coffee, Bakery',
-   pic: '/images/istockphoto-1339466407-1024x1024.jpg',
-   picCredit: `unsplash.com`,
-}]
+const {
+   trace,
+   stub
+} = require('../helper');
 
 router.get('/', (req, res) => {
+
    const route = '/places (GET)';
 
    trace(route)(req.params);
@@ -32,7 +22,20 @@ router.post('/', (req, res) => {
 
    trace(`${route} --> req.body`)(req.body);
 
-   res.send(stub(route))
+   if (!req.body.pic) {
+      // Default image if one is not provided
+      req.body.pic = 'http://placekitten.com/400/400'
+   }
+   if (!req.body.city) {
+      req.body.city = 'Anytown'
+   }
+   if (!req.body.state) {
+      req.body.state = 'USA'
+   }
+   places.push(req.body)
+   res.redirect('/places')
+
+
 });
 
 router.get('/new', (req, res) => {
