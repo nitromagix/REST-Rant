@@ -1,29 +1,64 @@
-body{
-   margin: 20px
-}
+body {
+   background-color: lightblue;
+   text-align: center;
+ }
+ 
+ main {
+   margin-right: 20px;
+   margin-left: 20px;
+   background-color: white;
+ }
+ 
 
 h1 {
    text-align: center;
    color: cornflowerblue;
- }
- 
- .banner img {
+}
+
+.banner img {
    display: block;
    height: 400px;
- }
+}
 
- .banner span, .place span {
-    display: block;
- }
+nav {
+   background-color: cornflowerblue;
+   padding: 10px;
+}
 
- .place img {
+nav ul {
+   list-style-type: none;
+   margin: 0;
+}
+
+nav li {
+   display: inline;
+   margin-right: 25px;
+}
+
+nav a {
+   color: white;
+   font-size: 1.5em;
+}
+
+nav a:hover {
+   color: pink;
+   text-decoration: none;
+}
+
+
+.banner span,
+.place span {
+   display: block;
+}
+
+.place img {
    display: inline-block;
    height: 300px;
- }
+}
 
- .thumb1 { 
-   background: 50% 50% no-repeat; /* 50% 50% centers image in div */
+.thumb1 {
+   background: 50% 50% no-repeat;
+   /* 50% 50% centers image in div */
    width: 250px;
    height: 250px;
- }
- 
+}

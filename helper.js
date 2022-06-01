@@ -2,7 +2,7 @@
 
 
 const trace = label => value => {
-   console.log(`${label} --> ${typeof value === 'object' ? JSON.stringify(value) : value}`);
+   console.log(`${label} --> ${typeof value === 'object' ? JSON.stringify(value) : value}\r\n`);
    return value;
 };
 

@@ -9,12 +9,11 @@ const {
 } = require('../helper');
 
 router.get('/', (req, res) => {
-
    const route = '/places (GET)';
 
    trace(route)(req.params);
 
-   res.render('places/index.jsx', places)
+   res.render('places/index.jsx', {places})
 });
 
 router.post('/', (req, res) => {

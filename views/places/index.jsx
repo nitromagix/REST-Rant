@@ -5,16 +5,17 @@ const Default = require('../default');
 
 const { trace } = require('../../helper');
 
-function index(data) {
+function index({places}) {
 
    // how the activity showed to get the data did not work. data.places does NOT exist (undefined)
    // AND data is NOT iterable. came up with a temp work around. ask Aram on Thurs.
+   // console.log(places);
+   // const data = [];
+   // const d = Object.keys(places).map(key => {data.push(places[key])});
+   // data.splice(-3);
+   // console.log(data);
 
-   console.log(data);
-
-   const places = [data[0], data[1]];    
-
-   // trace(' | places')(places);
+   trace(' | places --> places (data)')(places);
 
    const placesFormatted = places.map((place) => {
       return (
