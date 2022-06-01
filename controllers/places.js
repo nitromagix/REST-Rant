@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
 
    trace(route)(req.params);
 
-   res.render('places/index.jsx', {places})
+   res.render('places/index.jsx', {
+      places
+   })
 });
 
 router.post('/', (req, res) => {
@@ -51,7 +53,18 @@ router.get('/:id', (req, res) => {
    trace(route)('');
    trace(' | params')(params);
 
-   res.send(stub(route))
+   let id = Number(req.params.id)
+   trace(' | id')(id);
+   trace(' | places[id]')(places[id]);
+   if (isNaN(id)) {
+      res.render('error404');
+   } else if (!places[id]) {
+      res.render('error404')
+   } else {
+      res.render('places/show', {
+         place: places[id]
+      })
+   }
 });
 
 router.put('/:id', (req, res) => {

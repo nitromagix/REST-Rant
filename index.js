@@ -12,7 +12,7 @@ app.set('view engine', 'jsx');
 app.engine('jsx', expressReactViews);
 
 app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 // Controllers and Routes
 app.use('/places', require('./controllers/places'));
