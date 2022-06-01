@@ -51,9 +51,19 @@ nav a:hover {
    display: block;
 }
 
-.place img {
-   text-align: center;
+.banner img {
+
    display: inline-block;
+   margin-left: auto;
+   margin-right: auto;
+   height: 400px;
+}
+
+.place img {
+
+   display: inline-block;
+   margin-left: auto;
+   margin-right: auto;
    height: 300px;
 }
 

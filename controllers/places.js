@@ -50,12 +50,11 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
    const route = '/places/:id (GET)';
    const params = req.params;
+   const id = Number(params.id)
    trace(route)('');
-   trace(' | params')(params);
-
-   let id = Number(req.params.id)
    trace(' | id')(id);
    trace(' | places[id]')(places[id]);
+   
    if (isNaN(id)) {
       res.render('error404');
    } else if (!places[id]) {
