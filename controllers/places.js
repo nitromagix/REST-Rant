@@ -54,14 +54,15 @@ router.get('/:id', (req, res) => {
    trace(route)('');
    trace(' | id')(id);
    trace(' | places[id]')(places[id]);
-   
+
    if (isNaN(id)) {
       res.render('error404');
    } else if (!places[id]) {
       res.render('error404')
    } else {
       res.render('places/show', {
-         place: places[id]
+         place: places[id],
+         id: id,
       })
    }
 });
@@ -90,7 +91,16 @@ router.delete('/:id', (req, res) => {
    trace(route)('');
    trace(' | params')(params);
 
-   res.send(stub(route))
+   let id = Number(req.params.id)
+   if (isNaN(id)) {
+      res.render('error404')
+   } else if (!places[id]) {
+      res.render('error404')
+   } else {
+      // res.send(stub(route))
+      places.splice(id, 1);
+      res.redirect('/places');
+   }
 });
 
 router.post('/:id/rant', (req, res) => {
