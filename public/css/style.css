@@ -1,3 +1,9 @@
+html,
+body {
+   height: 100%;
+   margin: 0;
+}
+
 body {
    background-color: lightblue;
    text-align: center;
@@ -18,6 +24,10 @@ h1 {
    height: 400px;
 }
 
+.padAll10 {
+   padding: 10px;
+}
+
 .padAll20 {
    padding: 20px;
 }
@@ -31,12 +41,12 @@ h1 {
    display: block;
 }
 
-.buttons {
-   
-}
-.buttons > div, .buttons > button {
+.buttons {}
+
+.buttons>div,
+.buttons>button {
    display: inline-block;
-   margin:0 10px
+   margin: 0 10px
 }
 
 .banner img {
@@ -60,4 +70,18 @@ h1 {
    /* 50% 50% centers image in div */
    width: 250px;
    height: 250px;
+}
+
+/* STICKY FOOTER */
+.stickyWrapper {
+   min-height: 100%;
+
+   /* Equal to height of footer */
+   /* But also accounting for potential margin-bottom of last child */
+   margin-bottom: -50px;
+}
+
+.footer,
+.push {
+   height: 50px;
 }

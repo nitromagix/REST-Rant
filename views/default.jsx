@@ -19,38 +19,43 @@ function Default(html) {
 
          </head>
          <body>
-         {/* https://www.geeksforgeeks.org/react-bootstrap-nav-component/ */}
+            <div className='stickyWrapper'>
+               {/* https://www.geeksforgeeks.org/react-bootstrap-nav-component/ */}
 
-            <nav className="navbar navbar-expand-md navbar-dark bg-primary">
-               <a className="navbar-brand leftMargin20" href="#">REST-Rant</a>
-               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                  <span className="navbar-toggler-icon"></span>
-               </button>
-               <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                  <div className="navbar-nav">
-                     <a className="nav-item nav-link" href="/">Home</a>
-                     <a className="nav-item nav-link" href="/places">Places</a>
-                     <a className="nav-item nav-link" href="/places/new">Add Place</a>
-                     <a className="nav-item nav-link disabled" href="#">_</a>
+               <nav className="navbar navbar-expand-md navbar-dark bg-primary">
+                  <a className="navbar-brand leftMargin20" href="#">REST-Rant</a>
+                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                     <span className="navbar-toggler-icon"></span>
+                  </button>
+                  <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                     <div className="navbar-nav">
+                        <a className="nav-item nav-link" href="/">Home</a>
+                        <a className="nav-item nav-link" href="/places">Places</a>
+                        <a className="nav-item nav-link" href="/places/new">Add Place</a>
+                        <a className="nav-item nav-link disabled" href="#">_</a>
+                     </div>
                   </div>
-               </div>
-            </nav>
-            {/* <nav>
-               <ul>
-                  <li>
-                     <a href="/">Home</a>
-                  </li>
-                  <li>
-                     <a href="/places">Places</a>
-                  </li>
-                  <li>
-                     <a href="/places/new">Add Place</a>
-                  </li>
-               </ul>
-            </nav> */}
+               </nav>
+               {/* <nav>
+                     <ul>
+                        <li>
+                           <a href="/">Home</a>
+                        </li>
+                        <li>
+                           <a href="/places">Places</a>
+                        </li>
+                        <li>
+                           <a href="/places/new">Add Place</a>
+                        </li>
+                     </ul>
+                  </nav> */}
 
-            <h1><a href='/'>REST-Rant</a></h1>
-            {html.children}
+               <h1><a href='/'>REST-Rant</a></h1>
+               {html.children}
+               <div class="push"></div>
+            </div>
+            <footer class="footer navbar-dark bg-primary padAll10">By Martin Prost 2021-{(new Date).getFullYear().toString()}</footer>
+
          </body>
       </html>
    )
