@@ -9,7 +9,7 @@ function edit_form({ place, id }) {
          <main>
             <h2>Edit Place</h2>
             <form method="POST" action={`/places/${id}?_method=PUT`}>
-               <div className='row'>
+               <div className='row padAll20'>
                   <div className="form-group col-sm-6">
                      <label htmlFor="name">Place Name</label>
                      <input
@@ -28,7 +28,7 @@ function edit_form({ place, id }) {
                         value={place.pic} />
                   </div>
                </div>
-               <div className='row'>
+               <div className='row padAll20'>
                   <div className="form-group col-sm-6">
                      <label htmlFor="city">City</label>
                      <input
@@ -46,7 +46,7 @@ function edit_form({ place, id }) {
                         value={place.state} />
                   </div>
                </div>
-               <div className='row'>
+               <div className='row padAll20'>
                   <div className="form-group">
                      <label htmlFor="cuisines">Cuisines</label>
                      <input
@@ -57,7 +57,14 @@ function edit_form({ place, id }) {
                         required />
                   </div>
                </div>
-               <input className="btn btn-primary" type="submit" value="Save" />
+               <div className='buttons padAll20'>
+                  <input className="btn btn-primary" type="submit" value="Save" />
+                  <div>
+                     <a href={`/places/${id}`} className="btn btn-warning">
+                        Cancel
+                     </a>
+                  </div>
+               </div>
             </form>
          </main>
       </Def>

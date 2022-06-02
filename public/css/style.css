@@ -4,11 +4,9 @@ body {
 }
 
 main {
-   margin-right: 20px;
-   margin-left: 20px;
+   margin: 20px;
    background-color: white;
 }
-
 
 h1 {
    text-align: center;
@@ -20,13 +18,25 @@ h1 {
    height: 400px;
 }
 
-.left20 {
+.padAll20 {
+   padding: 20px;
+}
+
+.leftMargin20 {
    margin-left: 20px;
 }
 
 .banner span,
 .place span {
    display: block;
+}
+
+.buttons {
+   
+}
+.buttons > div, .buttons > button {
+   display: inline-block;
+   margin:0 10px
 }
 
 .banner img {

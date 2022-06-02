@@ -22,7 +22,7 @@ function Default(html) {
          {/* https://www.geeksforgeeks.org/react-bootstrap-nav-component/ */}
 
             <nav className="navbar navbar-expand-md navbar-dark bg-primary">
-               <a className="navbar-brand left20" href="#">REST-Rant</a>
+               <a className="navbar-brand leftMargin20" href="#">REST-Rant</a>
                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
                </button>
