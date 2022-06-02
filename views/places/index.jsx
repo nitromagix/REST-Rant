@@ -7,7 +7,8 @@ const { trace } = require('../../helper');
 
 function index({ places }) {
 
-   trace(' | places --> places (data)')(places);
+   trace(' | index.jsx')('index({places})');
+   
    const placesFormatted = places.map((place, index) => {
       return (
          <div className="col-sm-6 place">

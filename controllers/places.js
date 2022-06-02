@@ -82,7 +82,16 @@ router.get('/:id/edit', (req, res) => {
    trace(route)('');
    trace(' | params')(params);
 
-   res.send(stub(route))
+   let id = Number(req.params.id);
+   if (isNaN(id)) {
+       res.render('error404');
+   }
+   else if (!places[id]) {
+       res.render('error404');
+   }
+   else {
+     res.render('places/edit', { place: places[id], id: id });
+   }
 });
 
 router.delete('/:id', (req, res) => {
