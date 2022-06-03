@@ -32,6 +32,11 @@ h1 {
    padding: 20px;
 }
 
+.padTop10 {
+   padding-left: 10px;
+   padding-top: 10px;
+}
+
 .leftMargin20 {
    margin-left: 20px;
 }

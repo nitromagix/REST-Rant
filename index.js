@@ -24,6 +24,7 @@ app.use('/places', require('./controllers/places'));
 app.get('/', (req, res) => {
    const route = '/ (GET)';
    trace(route)(req.params);
+   trace(route)(req.query);
 
    // res.send(stub(route));
    res.render('home');
