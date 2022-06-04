@@ -54,7 +54,7 @@ function index({ places }) {
    return (
       <Default>
          <main>
-            <h2 className='text-center'>PLACES</h2>
+            <h2>PLACES</h2>
             <div className='row'>
                {placesFormatted}
             </div>

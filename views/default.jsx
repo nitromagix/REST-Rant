@@ -22,29 +22,48 @@ function Default(html) {
 
          </head>
          <body>
+            <header>
+               <nav className="navbar navbar-expand-sm navbar-custom">
+                  <a href="/" className="navbar-brand marginLeft20">REST-Rant</a>
+                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
+                     <i className="fa fa-bars fa-lg py-1 text-white"></i>
+                  </button>
+                  <div className="navbar-collapse justify-content-center" id="navbarCustom">
+                     <ul className="navbar-nav">
+                        <li className="nav-item active">
+                           <a className="nav-link" href="/">Home</a>
+                        </li>
+                        <li className="nav-item">
+                           <a className="nav-link" href="/places">Places</a>
+                        </li>
+                        <li className="nav-item">
+                           <a className="nav-link" href="/places/new">Add Place</a>
+                        </li>
+                     </ul>
+                     <span className="ml-auto navbar-text"></span>
+                  </div>
+               </nav>
+
+            </header>
             <div className='stickyWrapper'>
+               <div>
+                  <div className='leftBox'>
 
-               <Nav variant="pills" as="ul"
-                  // activeKey={useState('navSelected')}
-                  // onSelect={(selectedKey) => useState('navSelected') = selectedKey}
-                  className='justify-content-center border-bottom padAll10'>
-                  <Nav.Item as="li">
-                     <Nav.Link href="/?t=home" eventKey="/?t=home">Home</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item as="li">
-                     <Nav.Link href="/places?t=places" eventKey="/places?t=places">Places</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item as="li">
-                     <Nav.Link href="/places/new?t=new" eventKey="/places/new">Add Place</Nav.Link>
-                  </Nav.Item>
-               </Nav>
 
-               <h1><a href='/'>REST-Rant</a></h1>
-               {html.children}
-               <div class="push"></div>
+
+                  </div>
+                  <div className='mainBox'>
+                     {/* <h1><a href='/'>REST-Rant</a></h1> */}
+                     {html.children}
+                  </div>
+                  <div className='rightBox'></div>
+               </div>
+
+
+
+               <div className="push"></div>
             </div>
-            <footer class="footer navbar-dark bg-primary padAll10">By Martin Prost 2021-{(new Date).getFullYear().toString()}</footer>
-
+            <footer className="footer padAll10">By Martin Prost 2021-{(new Date).getFullYear().toString()}</footer>
          </body>
       </html>
    )
