@@ -10,7 +10,7 @@ function newPlace() {
    return (
       <Def>
          <main>
-            <h1>Add a New Place</h1>
+            <h2>Add a New Place</h2>
             <form method="POST" action="/places">
                <div className='row padAll20'>
                   <div className="form-group col-sm-6">
