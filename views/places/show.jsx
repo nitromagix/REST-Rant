@@ -11,13 +11,13 @@ function show({ place, id }) {
          <main>
             <div className='row textAlignCenter'>
                <div className="form-group col-sm-1"></div>
-               <div className="form-group col-sm-6 padAll20">
+               <div className="form-group col-sm-6 padAll15">
                   <div className='banner'>
                      <img src={place.pic} alt={place.name}></img>
                      <span><sup>{place.picCredit}</sup></span>
                   </div>
                </div>
-               <div className="form-group col-sm-4 padAll20">
+               <div className="form-group col-sm-4 padAll15">
                   <h2>
                      {place.name}
                   </h2>

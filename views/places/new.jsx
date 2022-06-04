@@ -12,7 +12,7 @@ function newPlace() {
          <main>
             <h2>Add a New Place</h2>
             <form method="POST" action="/places">
-               <div className='row padAll20'>
+               <div className='row padAll15'>
                   <div className="form-group col-sm-6">
                      <label htmlFor="name">Place Name</label>
                      <input className="form-control" id="name" name="name" required />
@@ -22,7 +22,7 @@ function newPlace() {
                      <input className="form-control" id="pic" name="pic" />
                   </div>
                </div>
-               <div className='row padAll20'>
+               <div className='row padAll15'>
                   <div className="form-group col-sm-6">
                      <label htmlFor="city">City</label>
                      <input className="form-control" id="city" name="city" />
@@ -32,13 +32,13 @@ function newPlace() {
                      <input className="form-control" id="state" name="state" />
                   </div>
                </div>
-               <div className='row padAll20'>
+               <div className='row padAll15'>
                   <div className="form-group">
                      <label htmlFor="cuisines">Cuisines</label>
                      <input className="form-control" id="cuisines" name="cuisines" required />
                   </div>
                </div>
-               <div className='buttons padAll20'>
+               <div className='buttons padAll15'>
                   <input className="btn btn-primary" type="submit" value="Add Place" />
                   <div>
                      <a href={`/places`} className="btn btn-warning">
