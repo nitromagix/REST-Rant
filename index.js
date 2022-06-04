@@ -20,6 +20,9 @@ app.engine('jsx', expressReactViews);
 // Controllers and Routes
 app.use('/places', require('./controllers/places'));
 
+app.get('/test', (req, res) => {
+   res.sendFile(__dirname + '/test.html');
+})
 
 app.get('/', (req, res) => {
    const route = '/ (GET)';

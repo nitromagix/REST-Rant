@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Responsive Resized Image in a Web Page</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        font-family: "Lucida Sans", sans-serif;
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+      .row:after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      .menu,
+      .content {
+        float: left;
+        padding: 15px;
+        width: 100%;
+      }
+      @media only screen and (min-width: 600px) {
+        .menu {
+          width: 25%;
+        }
+        .content {
+          width: 75%;
+        }
+      }
+      @media only screen and (min-width: 768px) {
+        .menu {
+          width: 20%;
+        }
+        .content {
+          width: 79%;
+        }
+      }
+      .header {
+        background-color: #1c87c9;
+        color: #ffffff;
+        padding: 10px;
+        text-align: center;
+      }
+      .menu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      .menu li {
+        padding: 8px;
+        margin-bottom: 7px;
+        background-color: #666666;
+        color: #ffffff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      }
+      .menu li:hover {
+        background-color: #1c87c9;
+      }
+      .footer {
+        background-color: #1c87c9;
+        color: #ffffff;
+        text-align: center;
+        font-size: 12px;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>W3DOCS</h1>
+    </div>
+    <div class="row">
+      <div class="menu">
+        <ul>
+          <li>Books</li>
+          <li>Snippets</li>
+          <li>Quizzes</li>
+          <li>Tools</li>
+        </ul>
+      </div>
+      <div class="content">
+        <h2>About Us</h2>
+        <p>
+          W3docs provides free learning materials for programming languages like HTML, CSS, Java Script, PHP etc.
+        </p>
+        <p>
+          It was founded in 2012 and has been increasingly gaining popularity and spreading among both beginners and professionals who want to enhance their programming skills.
+        </p>
+        <img src="/images/5bfad15a7fd24d448a48605baf52655a5bbe5a71.jpg" alt="Team Work" />
+      </div>
+    </div>
+    <div class="footer">
+      <p>
+        Resize the browser window to see how the content respond to the resizing.
+      </p>
+    </div>
+  </body>
+</html>

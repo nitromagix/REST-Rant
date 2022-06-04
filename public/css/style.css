@@ -26,8 +26,12 @@ footer {
 }
 
 .banner img {
-   display: block;
-   height: 400px;
+   display: inline-block;
+   max-height: 350px;
+   height: auto;
+   max-width: 100%;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .padAll10 {
@@ -58,14 +62,6 @@ footer {
 .buttons>button {
    display: inline-block;
    margin: 0 10px
-}
-
-.banner img {
-
-   display: inline-block;
-   margin-left: auto;
-   margin-right: auto;
-   height: 400px;
 }
 
 .place img {
