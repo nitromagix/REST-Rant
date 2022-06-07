@@ -8,7 +8,7 @@ const { Navbar, NavItem, NavDropdown, MenuItem, Nav } = require('react-bootstrap
 
 function Default(html) {
    trace(' | default')('Default(html)')
-   console.log(html);
+   // console.log(html);
    return (
       <html>
          <head>
