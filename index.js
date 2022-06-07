@@ -1,4 +1,4 @@
-'use strict';
+
 
 // Modules and Globals
 

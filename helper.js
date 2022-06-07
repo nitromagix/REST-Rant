@@ -1,4 +1,4 @@
-'use strict';
+
 
 
 const trace = label => value => {

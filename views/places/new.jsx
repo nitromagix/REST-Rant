@@ -1,4 +1,4 @@
-'use strict';
+
 
 const React = require('react');
 const Def = require('../default');
@@ -33,9 +33,14 @@ function newPlace() {
                   </div>
                </div>
                <div className='row padAll15'>
-                  <div className="form-group">
+                  <div className="form-group col-sm-8">
                      <label htmlFor="cuisines">Cuisines</label>
                      <input className="form-control" id="cuisines" name="cuisines" required />
+                  </div>
+
+                  <div className="form-group col-sm-4">
+                     <label for="founded">Founded Year</label>
+                     <input className="form-control" id="founded" name="founded" />
                   </div>
                </div>
                <div className='buttons padAll15'>
