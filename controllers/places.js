@@ -112,20 +112,21 @@ router.put('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
    const route = '/places/:id/edit (GET)';
    const params = req.params;
+   const id = params.id
    trace(route)('');
-   trace(' | params')(params);
+   trace(' | id')(id);
 
-   let id = Number(req.params.id);
-   if (isNaN(id)) {
-      res.render('error404');
-   } else if (!places[id]) {
-      res.render('error404');
-   } else {
-      res.render('places/edit', {
-         place: places[id],
-         id: id
-      });
-   }
+
+   db.Place.findById(req.params.id)
+      .then(place => {
+         res.render('places/edit', {
+            place
+         })
+      })
+      .catch(err => {
+         console.log('err', err)
+         res.render('error404')
+      })
 });
 
 router.delete('/:id', (req, res) => {

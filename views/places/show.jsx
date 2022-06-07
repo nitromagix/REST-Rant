@@ -5,7 +5,7 @@ const Def = require('../default')
 
 const { trace } = require('../../helper');
 
-function show({ place, id }) {
+function show({ place }) {
    return (
       <Def>
          <main>
@@ -35,9 +35,9 @@ function show({ place, id }) {
             </div>
          </main>
 
-         <form method="POST" action={`/places/${id}?_method=DELETE`}>
+         <form method="POST" action={`/places/${place.id}?_method=DELETE`}>
             <div className='buttons'> <div>
-               <a href={`/places/${id}/edit`} className="btn btn-warning">Edit</a>
+               <a href={`/places/${place.id}/edit`} className="btn btn-warning">Edit</a>
             </div>
                <button type="submit" className="btn btn-danger marginLeft20">
                   Delete
