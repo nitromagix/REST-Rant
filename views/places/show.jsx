@@ -6,6 +6,8 @@ const Def = require('../default')
 const { trace } = require('../../helper');
 
 function show({ place }) {
+   trace(' | show.jsx')('show({place})');
+   
    return (
       <Def>
          <main>

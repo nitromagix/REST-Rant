@@ -7,40 +7,66 @@ const { trace } = require('../../helper');
 
 
 function newPlace() {
+   trace(' | new.jsx')('newPlace()');
    return (
       <Def>
          <main>
             <h2>Add a New Place</h2>
             <form method="POST" action="/places">
                <div className='row padAll15'>
-                  <div className="form-group col-sm-6">
+                  <div className="form-group col-sm-12">
                      <label htmlFor="name">Place Name</label>
-                     <input className="form-control" id="name" name="name" required />
+                     <input className="form-control" 
+                     id="name" 
+                     name="name" 
+                     required />
+                  </div>
+
+               </div>
+               <div className='row padAll15'>
+                  <div className="form-group col-sm-6">
+                     <label htmlFor="pic">Place Photo</label>
+                     <input
+                        className="form-control"
+                        id="pic"
+                        name="pic" />
                   </div>
                   <div className="form-group col-sm-6">
-                     <label htmlFor="pic">Place Picture</label>
-                     <input className="form-control" id="pic" name="pic" />
+                     <label htmlFor="pic">Place Photo Credit</label>
+                     <input
+                        className="form-control"
+                        id="picCredit"
+                        name="picCredit" />
                   </div>
                </div>
                <div className='row padAll15'>
                   <div className="form-group col-sm-6">
                      <label htmlFor="city">City</label>
-                     <input className="form-control" id="city" name="city" />
+                     <input  className="form-control" 
+                     id="city" 
+                     name="city" />
                   </div>
                   <div className="form-group col-sm-6">
                      <label htmlFor="state">State</label>
-                     <input className="form-control" id="state" name="state" />
+                     <input className="form-control" 
+                     id="state" 
+                     name="state" />
                   </div>
                </div>
                <div className='row padAll15'>
                   <div className="form-group col-sm-8">
                      <label htmlFor="cuisines">Cuisines</label>
-                     <input className="form-control" id="cuisines" name="cuisines" required />
+                     <input className="form-control" 
+                     id="cuisines" 
+                     name="cuisines" 
+                     required />
                   </div>
 
                   <div className="form-group col-sm-4">
                      <label for="founded">Founded Year</label>
-                     <input className="form-control" id="founded" name="founded" />
+                     <input className="form-control" 
+                     id="founded" 
+                     name="founded" />
                   </div>
                </div>
                <div className='buttons padAll15'>

@@ -3,6 +3,8 @@
 const React = require('react');
 const Def = require('./default');
 
+const { trace } = require('../helper');
+
 function home() {
    return (
       <Def>

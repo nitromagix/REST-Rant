@@ -10,8 +10,7 @@ const {
 
 router.get('/', (req, res) => {
    const route = '/places (GET)';
-
-   trace(route)(req.params);
+   trace(route)('');
 
    db.Place.find()
       .then((places) => {
@@ -29,12 +28,11 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
    const route = '/places (POST)';
-
    trace(`${route} --> req.body`)(req.body);
 
    if (!req.body.pic) {
       // Default image if one is not provided
-      req.body.pic = 'http://placekitten.com/400/400'
+      req.body.pic = '/images/tv-test-pattern-146649_960_720-1502262587.png'
    }
 
    db.Place.create(req.body)
@@ -52,7 +50,7 @@ router.post('/', (req, res) => {
 
 router.get('/new', (req, res) => {
    const route = '/places/new (GET)';
-   trace(route)(req.params);
+   trace(route)('');
 
    // res.send(stub(route))
    res.render('places/new.jsx')
@@ -60,13 +58,11 @@ router.get('/new', (req, res) => {
 
 router.get('/:id', (req, res) => {
    const route = '/places/:id (GET)';
-   const params = req.params;
-   const id = params.id
-   trace(route)('');
-   trace(' | id')(id);
+   const id = req.params.id
+   trace(route)(id);
 
 
-   db.Place.findById(req.params.id)
+   db.Place.findById(id)
       .then(place => {
          res.render('places/show', {
             place
@@ -81,43 +77,39 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
    const route = '/places/:id (PUT)';
-   const params = req.params;
-   trace(route)('');
-   trace(' | params')(params);
+   const id = req.params.id
+   trace(route)(id);
 
-   let id = Number(req.params.id)
-   if (isNaN(id)) {
-      res.render('error404')
-   } else if (!places[id]) {
-      res.render('error404')
-   } else {
-      // Dig into req.body and make sure data is valid
-      if (!req.body.pic) {
-         // Default image if one is not provided
-         req.body.pic = 'http://placekitten.com/400/400'
-      }
-      if (!req.body.city) {
-         req.body.city = 'Anytown'
-      }
-      if (!req.body.state) {
-         req.body.state = 'USA'
-      }
+   // let id = Number(req.params.id)
+   // if (isNaN(id)) {
+   //    res.render('error404')
+   // } else if (!places[id]) {
+   //    res.render('error404')
+   // } else {
+   //    // Dig into req.body and make sure data is valid
+   //    if (!req.body.pic) {
+   //       // Default image if one is not provided
+   //       req.body.pic = 'http://placekitten.com/400/400'
+   //    }
+   //    if (!req.body.city) {
+   //       req.body.city = 'Anytown'
+   //    }
+   //    if (!req.body.state) {
+   //       req.body.state = 'USA'
+   //    }
 
-      // Save the new data into places[id]
-      places[id] = req.body
-      res.redirect(`/places/${id}`)
-   }
+   //    // Save the new data into places[id]
+   //    places[id] = req.body
+   //    res.redirect(`/places/${id}`)
+   // }
 });
 
 router.get('/:id/edit', (req, res) => {
    const route = '/places/:id/edit (GET)';
-   const params = req.params;
-   const id = params.id
-   trace(route)('');
-   trace(' | id')(id);
+   const id = req.params.id
+   trace(route)(id);
 
-
-   db.Place.findById(req.params.id)
+   db.Place.findById(id)
       .then(place => {
          res.render('places/edit', {
             place
@@ -131,36 +123,31 @@ router.get('/:id/edit', (req, res) => {
 
 router.delete('/:id', (req, res) => {
    const route = '/places/:id (DELETE)';
-   const params = req.params;
-   trace(route)('');
-   trace(' | params')(params);
+   const id = req.params.id
+   trace(route)(id);
 
-   let id = Number(req.params.id)
-   if (isNaN(id)) {
-      res.render('error404')
-   } else if (!places[id]) {
-      res.render('error404')
-   } else {
-      // res.send(stub(route))
-      places.splice(id, 1);
-      res.redirect('/places');
-   }
+   db.Place.findByIdAndDelete(id)
+   .then(place => {
+      res.status(303).redirect('/places')
+   })
+   .catch((err) => {
+      console.log(err);
+   })
 });
 
 router.post('/:id/rant', (req, res) => {
    const route = '/places/:id/rant (POST)';
-   const params = req.params;
-   trace(route)('');
-   trace(' | params')(params);
+   const id = req.params.id;
+   trace(route)(id);
 
    res.send(stub(route))
 });
 
 router.delete('/:id/rant/:rantId', (req, res) => {
    const route = '/places/:id/rant/:rantId (DELETE)';
-   const params = req.params;
-   trace(route)('');
-   trace(' | params')(params);
+   const id = req.params.id;
+   const rantId = req.params.rantId;
+   trace(route)(`id: ${id}, rantId:${rantId}`);
 
    res.send(stub(route))
 });
