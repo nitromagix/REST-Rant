@@ -6,18 +6,18 @@ const Def = require('../default');
 const { trace } = require('../../helper');
 
 
-function newPlace({ message }) {
+function newPlace({ message, body }) {
    trace(' | new.jsx')('newPlace()');
    let displayMessage = ''
    if (message) {
       displayMessage = (
          <div className='error'>
-         <h4 >
-            Validation Error:
-         </h4>
-         <p>
-            {message}
-         </p>
+            <h4 >
+               Validation Error:
+            </h4>
+            <p>
+               {message}
+            </p>
          </div>
       )
    }
@@ -34,7 +34,8 @@ function newPlace({ message }) {
                      <input className="form-control"
                         id="name"
                         name="name"
-                        required />
+                        required
+                        defaultValue={body ? body.name : ''} />
                   </div>
 
                </div>
@@ -44,14 +45,16 @@ function newPlace({ message }) {
                      <input
                         className="form-control"
                         id="pic"
-                        name="pic" />
+                        name="pic"
+                        defaultValue={body ? body.pic : ''} />
                   </div>
                   <div className="form-group col-sm-6">
                      <label htmlFor="pic">Place Photo Credit</label>
                      <input
                         className="form-control"
                         id="picCredit"
-                        name="picCredit" />
+                        name="picCredit"
+                        defaultValue={body ? body.picCredit : ''} />
                   </div>
                </div>
                <div className='row padAll15'>
@@ -59,13 +62,16 @@ function newPlace({ message }) {
                      <label htmlFor="city">City</label>
                      <input className="form-control"
                         id="city"
-                        name="city" />
+                        name="city" 
+                        defaultValue={body ? body.city : ''} />
+                        
                   </div>
                   <div className="form-group col-sm-6">
                      <label htmlFor="state">State</label>
                      <input className="form-control"
                         id="state"
-                        name="state" />
+                        name="state"
+                        defaultValue={body ? body.state : ''} />
                   </div>
                </div>
                <div className='row padAll15'>
@@ -74,7 +80,8 @@ function newPlace({ message }) {
                      <input className="form-control"
                         id="cuisines"
                         name="cuisines"
-                        required />
+                        required 
+                        defaultValue={body ? body.cuisines : ''}/>
                   </div>
 
                   <div className="form-group col-sm-4">
@@ -83,7 +90,7 @@ function newPlace({ message }) {
                         type="number"
                         id="founded"
                         name="founded"
-                        defaultValue={new Date().getFullYear()} />
+                        defaultValue={body ? body.founded : (new Date().getFullYear())} />
                   </div>
                </div>
                <div className='buttons padAll15'>

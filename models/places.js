@@ -24,7 +24,7 @@ const placeSchema = new mongoose.Schema({
    },
    founded: {
       type: Number,
-      min: [1673, '?'],
+      min: [1673, 'Really? That old?'],
       max: [(new Date().getFullYear()), 'The year is in the future']
    }
 })

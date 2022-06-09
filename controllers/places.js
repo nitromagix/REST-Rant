@@ -42,10 +42,12 @@ router.post('/', (req, res) => {
             let message = ''
             for(let field in err.errors) {
                message+= `${field} was ${err.errors[field].value}. `
-               message+= `${err.errors[field].message}.`
+               message+= `${err.errors[field].message}`
             }
+            const body = req.body;
             res.render('places/new', {
-               message
+               message,
+               body
             })
          } else {
             res.render('error404')
