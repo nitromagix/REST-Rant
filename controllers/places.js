@@ -28,23 +28,29 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
    const route = '/places (POST)';
-   trace(`${route} --> req.body`)(req.body);
+   trace(route)(req.body);
 
-   if (!req.body.pic) {
-      // Default image if one is not provided
-      req.body.pic = '/images/tv-test-pattern-146649_960_720-1502262587.png'
-   }
+   if (!req.body.pic) { req.body.pic = undefined }
 
    db.Place.create(req.body)
       .then(() => {
          res.redirect('/places')
       })
       .catch(err => {
-         console.log('err', err)
-         res.render('error404')
+         trace(err.name)(err);
+         if (err && err.name == 'ValidationError') {
+            let message = ''
+            for(let field in err.errors) {
+               message+= `${field} was ${err.errors[field].value}. `
+               message+= `${err.errors[field].message}.`
+            }
+            res.render('places/new', {
+               message
+            })
+         } else {
+            res.render('error404')
+         }
       })
-
-
 
 });
 
@@ -127,12 +133,12 @@ router.delete('/:id', (req, res) => {
    trace(route)(id);
 
    db.Place.findByIdAndDelete(id)
-   .then(place => {
-      res.status(303).redirect('/places')
-   })
-   .catch((err) => {
-      console.log(err);
-   })
+      .then(place => {
+         res.status(303).redirect('/places')
+      })
+      .catch((err) => {
+         console.log(err);
+      })
 });
 
 router.post('/:id/rant', (req, res) => {

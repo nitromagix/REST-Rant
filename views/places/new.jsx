@@ -6,20 +6,35 @@ const Def = require('../default');
 const { trace } = require('../../helper');
 
 
-function newPlace() {
+function newPlace({ message }) {
    trace(' | new.jsx')('newPlace()');
+   let displayMessage = ''
+   if (message) {
+      displayMessage = (
+         <div className='error'>
+         <h4 >
+            Validation Error:
+         </h4>
+         <p>
+            {message}
+         </p>
+         </div>
+      )
+   }
+
    return (
       <Def>
          <main>
             <h2>Add a New Place</h2>
+            {displayMessage}
             <form method="POST" action="/places">
                <div className='row padAll15'>
                   <div className="form-group col-sm-12">
                      <label htmlFor="name">Place Name</label>
-                     <input className="form-control" 
-                     id="name" 
-                     name="name" 
-                     required />
+                     <input className="form-control"
+                        id="name"
+                        name="name"
+                        required />
                   </div>
 
                </div>
@@ -42,31 +57,33 @@ function newPlace() {
                <div className='row padAll15'>
                   <div className="form-group col-sm-6">
                      <label htmlFor="city">City</label>
-                     <input  className="form-control" 
-                     id="city" 
-                     name="city" />
+                     <input className="form-control"
+                        id="city"
+                        name="city" />
                   </div>
                   <div className="form-group col-sm-6">
                      <label htmlFor="state">State</label>
-                     <input className="form-control" 
-                     id="state" 
-                     name="state" />
+                     <input className="form-control"
+                        id="state"
+                        name="state" />
                   </div>
                </div>
                <div className='row padAll15'>
                   <div className="form-group col-sm-8">
                      <label htmlFor="cuisines">Cuisines</label>
-                     <input className="form-control" 
-                     id="cuisines" 
-                     name="cuisines" 
-                     required />
+                     <input className="form-control"
+                        id="cuisines"
+                        name="cuisines"
+                        required />
                   </div>
 
                   <div className="form-group col-sm-4">
                      <label for="founded">Founded Year</label>
-                     <input className="form-control" 
-                     id="founded" 
-                     name="founded" />
+                     <input className="form-control"
+                        type="number"
+                        id="founded"
+                        name="founded"
+                        defaultValue={new Date().getFullYear()} />
                   </div>
                </div>
                <div className='buttons padAll15'>
