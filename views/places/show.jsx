@@ -18,6 +18,7 @@ function show({ place }) {
                      <img src={place.pic} alt={place.name}></img>
                      <span><sup>{place.picCredit}</sup></span>
                   </div>
+                  <h4>Located in {place.city}, {place.state}</h4>
                </div>
                <div className="form-group col-sm-4 padAll15">
                   <h2>
@@ -26,8 +27,12 @@ function show({ place }) {
                   <h4>Rating</h4>
                   <p className="text-center">Not rated</p>
                   <h4>Description</h4>
-                  <p className="text-center">
-                     Located in {place.city}, {place.state} and serving {place.cuisines}
+                  <p>
+                     {place.showEstablished()}
+                  </p>
+                  <h4>Serving</h4>
+                  <p>
+                     {place.cuisines}
                   </p>
 
                   <h4>Comments</h4>
