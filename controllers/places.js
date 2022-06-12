@@ -8,6 +8,8 @@ const {
    stub
 } = require('../helper');
 
+// RETRIEVE - INDEX
+
 router.get('/', (req, res) => {
    const route = '/places (GET)';
    trace(route)('');
@@ -25,6 +27,8 @@ router.get('/', (req, res) => {
 
 
 });
+
+// CREATE - NEW (PLACE)
 
 router.post('/', (req, res) => {
    const route = '/places (POST)';
@@ -56,6 +60,8 @@ router.post('/', (req, res) => {
 
 });
 
+// RETRIEVE - NEW
+
 router.get('/new', (req, res) => {
    const route = '/places/new (GET)';
    trace(route)('');
@@ -63,6 +69,8 @@ router.get('/new', (req, res) => {
    // res.send(stub(route))
    res.render('places/new.jsx')
 });
+
+// RETRIEVE - SHOW
 
 router.get('/:id', (req, res) => {
    const route = '/places/:id (GET)';
@@ -82,6 +90,8 @@ router.get('/:id', (req, res) => {
       })
 
 });
+
+// UPDATE
 
 router.put('/:id', (req, res) => {
    const route = '/places/:id (PUT)';
@@ -112,6 +122,8 @@ router.put('/:id', (req, res) => {
    // }
 });
 
+// RETRIEVE - EDIT
+
 router.get('/:id/edit', (req, res) => {
    const route = '/places/:id/edit (GET)';
    const id = req.params.id
@@ -129,6 +141,8 @@ router.get('/:id/edit', (req, res) => {
       })
 });
 
+// DELETE (PLACE)
+
 router.delete('/:id', (req, res) => {
    const route = '/places/:id (DELETE)';
    const id = req.params.id
@@ -143,6 +157,8 @@ router.delete('/:id', (req, res) => {
       })
 });
 
+// CREATE - NEW (RANT)
+
 router.post('/:id/rant', (req, res) => {
    const route = '/places/:id/rant (POST)';
    const id = req.params.id;
@@ -150,6 +166,8 @@ router.post('/:id/rant', (req, res) => {
 
    res.send(stub(route))
 });
+
+// DELETE (RANT)
 
 router.delete('/:id/rant/:rantId', (req, res) => {
    const route = '/places/:id/rant/:rantId (DELETE)';
