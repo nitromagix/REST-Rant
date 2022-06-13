@@ -7,7 +7,27 @@ const { trace } = require('../../helper');
 
 function show({ place }) {
    trace(' | show.jsx')('show({place})');
-   
+
+   let comments = (
+      <h4 className="inactive">
+         No comments yet
+      </h4>
+   )
+   if (place.comments.length) {
+      comments = place.comments.map(c => {
+         return (
+            <div className="border padAll10">
+               <h5 className="rant">{c.rant ? 'Rant!' : 'Rave!'}</h5>
+               <p>{c.content}</p>
+               <h5>
+                  <strong>- {c.author}</strong>
+               </h5>
+               <h6>Rating: {c.stars}</h6>
+            </div>
+         )
+      })
+   }
+
    return (
       <Def>
          <main>
@@ -35,8 +55,8 @@ function show({ place }) {
                      {place.cuisines}
                   </p>
 
-                  <h4>Comments</h4>
-                  <p className="text-center">No comments yet</p>
+                  <h4>Comments:</h4>
+                  {comments}
                </div>
                <div className="form-group col-sm-1"></div>
             </div>

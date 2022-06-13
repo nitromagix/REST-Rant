@@ -70,7 +70,10 @@ router.get('/:id', async (req, res) => {
    const id = req.params.id
    trace(route)(id);
 
-   const foundPlace = await db.Place.findById(id);
+   const foundPlace = await db.Place
+      .findById(id)
+      .populate('comments');
+   trace('comments')(foundPlace.comments)
    res.render('places/show', {
       place: foundPlace
    });
