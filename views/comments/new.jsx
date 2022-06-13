@@ -6,21 +6,21 @@ const Def = require('../default');
 const { trace } = require('../../helper');
 
 
-function newPlace({ message, body }) {
-   trace(' | places/new.jsx')('newPlace()');
-   let displayMessage = ''
-   if (message) {
-      displayMessage = (
-         <div className='error'>
-            <h4 >
-               Validation Error:
-            </h4>
-            <p>
-               {message}
-            </p>
-         </div>
-      )
-   }
+function newComment({ message, body }) {
+   trace(' | comment/new.jsx')('newComment()');
+   // let displayMessage = ''
+   // if (message) {
+   //    displayMessage = (
+   //       <div className='error'>
+   //          <h4 >
+   //             Validation Error:
+   //          </h4>
+   //          <p>
+   //             {message}
+   //          </p>
+   //       </div>
+   //    )
+   // }
 
    return (
       <Def>

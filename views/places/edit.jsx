@@ -6,7 +6,7 @@ const Def = require('../default.jsx')
 const { trace } = require('../../helper');
 
 function edit_form({ place }) {
-   trace(' | edit.jsx')('edit_form({place})');
+   trace(' | places/edit.jsx')('edit_form({place})');
    return (
       <Def>
          <main>

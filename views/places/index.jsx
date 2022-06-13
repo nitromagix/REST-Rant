@@ -6,7 +6,7 @@ const { trace } = require('../../helper');
 
 function index({ places }) {
 
-   trace(' | index.jsx')('index({places})');
+   trace(' | places/index.jsx')('index({places})');
    
    const placesFormatted = places.map((place, index) => {
       return (

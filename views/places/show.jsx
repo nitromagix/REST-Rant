@@ -6,7 +6,7 @@ const Def = require('../default')
 const { trace } = require('../../helper');
 
 function show({ place }) {
-   trace(' | show.jsx')('show({place})');
+   trace(' | places/show.jsx')('show({place})');
 
    let comments = (
       <h4 className="inactive">
