@@ -92,18 +92,18 @@ function show({ place }) {
                   </div>
                </div>
                <div className='row padAll15'>
-                  <div className="form-group col-sm-6">
-                     <label htmlFor="stars">Stars</label>
-                     <input className="form-control"
+                  <div className="form-group col-sm-8">
+                     <label htmlFor="stars">Stars (between 1 and 5)</label>
+                     <input className="form-range"
                         id="stars"
                         name="stars"
-                        type="number"
+                        type="range"
                         min={1}
                         max={5}
                         step={0.5} />
                   </div>
-                  <div className="form-group col-sm-6">
-                     <label htmlFor="rant">Rant?&nbsp;</label>
+                  <div className="form-group col-sm-4">
+                     <label htmlFor="rant">Rant?&nbsp;</label><br/>
                      <input 
                         id="rant"
                         name="rant"
