@@ -10,59 +10,52 @@ const {
 
 // RETRIEVE - INDEX
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
    const route = '/places (GET)';
    trace(route)('');
 
-   db.Place.find()
-      .then((places) => {
-         res.render('places/index.jsx', {
-            places
-         })
-      })
-      .catch(err => {
-         trace('Error')(err)
-         res.redirect('error404');
-      })
-
-
+   const places = await db.Place.find();
+   res.render('places/index', {
+      places
+   });
 });
 
 // CREATE - NEW (PLACE)
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
    const route = '/places (POST)';
    trace(route)(req.body);
 
-   if (!req.body.pic) { req.body.pic = undefined }
+   if (!req.body.pic) {
+      req.body.pic = undefined
+   }
 
-   db.Place.create(req.body)
-      .then(() => {
-         res.redirect('/places')
-      })
-      .catch(err => {
-         trace(err.name)(err);
-         if (err && err.name == 'ValidationError') {
-            let message = ''
-            for(let field in err.errors) {
-               message+= `${field} was ${err.errors[field].value}. `
-               message+= `${err.errors[field].message}`
-            }
-            const body = req.body;
-            res.render('places/new', {
-               message,
-               body
-            })
-         } else {
-            res.render('error404')
+   try {
+      const newPlace = await db.Place.create(req.body);
+      res.redirect('/places');
+   } catch (err) {
+      trace(err.name)(err);
+      if (err && err.name == 'ValidationError') {
+         let message = ''
+         for (let field in err.errors) {
+            message += `${field} was ${err.errors[field].value}. `
+            message += `${err.errors[field].message}`
          }
-      })
+         const body = req.body;
+         res.render('places/new', {
+            message,
+            body
+         })
+      } else {
+         res.render('error404')
+      }
+   }
 
 });
 
 // RETRIEVE - NEW
 
-router.get('/new', (req, res) => {
+router.get('/new', async (req, res) => {
    const route = '/places/new (GET)';
    trace(route)('');
 
@@ -72,28 +65,20 @@ router.get('/new', (req, res) => {
 
 // RETRIEVE - SHOW
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
    const route = '/places/:id (GET)';
    const id = req.params.id
    trace(route)(id);
 
-
-   db.Place.findById(id)
-      .then(place => {
-         res.render('places/show', {
-            place
-         })
-      })
-      .catch(err => {
-         console.log('err', err)
-         res.render('error404')
-      })
-
+   const foundPlace = await db.Place.findById(id);
+   res.render('places/show', {
+      place: foundPlace
+   });
 });
 
 // UPDATE
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
    const route = '/places/:id (PUT)';
    const id = req.params.id
    trace(route)(id);
@@ -124,42 +109,31 @@ router.put('/:id', (req, res) => {
 
 // RETRIEVE - EDIT
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', async (req, res) => {
    const route = '/places/:id/edit (GET)';
    const id = req.params.id
    trace(route)(id);
 
-   db.Place.findById(id)
-      .then(place => {
-         res.render('places/edit', {
-            place
-         })
-      })
-      .catch(err => {
-         console.log('err', err)
-         res.render('error404')
-      })
+   const foundPlace = await db.Place.findById(id);
+   res.render('places/edit', {
+      place: foundPlace
+   })
 });
 
 // DELETE (PLACE)
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
    const route = '/places/:id (DELETE)';
    const id = req.params.id
    trace(route)(id);
 
-   db.Place.findByIdAndDelete(id)
-      .then(place => {
-         res.status(303).redirect('/places')
-      })
-      .catch((err) => {
-         console.log(err);
-      })
+   const deletedPlace = await db.Place.findByIdAndDelete(id);
+   res.status(303).redirect('/places')
 });
 
 // CREATE - NEW (RANT)
 
-router.post('/:id/rant', (req, res) => {
+router.post('/:id/rant', async (req, res) => {
    const route = '/places/:id/rant (POST)';
    const id = req.params.id;
    trace(route)(id);
@@ -169,7 +143,7 @@ router.post('/:id/rant', (req, res) => {
 
 // DELETE (RANT)
 
-router.delete('/:id/rant/:rantId', (req, res) => {
+router.delete('/:id/rant/:rantId', async (req, res) => {
    const route = '/places/:id/rant/:rantId (DELETE)';
    const id = req.params.id;
    const rantId = req.params.rantId;

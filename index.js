@@ -20,11 +20,11 @@ app.engine('jsx', expressReactViews);
 // Controllers and Routes
 app.use('/places', require('./controllers/places'));
 
-app.get('/test', (req, res) => {
+app.get('/test', async (req, res) => {
    res.sendFile(__dirname + '/test.html');
 })
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
    const route = '/ (GET)';
    trace(route)(req.params);
    trace(route)(req.query);
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 
 });
 
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
    const route = '404 (GET)'
    const params = req.params;
    const query = req.query;
