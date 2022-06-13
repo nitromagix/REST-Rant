@@ -6,97 +6,54 @@ const Def = require('../default');
 const { trace } = require('../../helper');
 
 
-function newComment({ message, body }) {
+function newComment({ placeId, body }) {
    trace(' | comment/new.jsx')('newComment()');
-   // let displayMessage = ''
-   // if (message) {
-   //    displayMessage = (
-   //       <div className='error'>
-   //          <h4 >
-   //             Validation Error:
-   //          </h4>
-   //          <p>
-   //             {message}
-   //          </p>
-   //       </div>
-   //    )
-   // }
-
    return (
       <Def>
          <main>
-            <h2>Add a New Place</h2>
-            {displayMessage}
-            <form method="POST" action="/places">
+            <h2>Add a New Rant/Rave</h2>
+            <form method="POST" action={`/places/${placeId}/rant"`}>
                <div className='row padAll15'>
                   <div className="form-group col-sm-12">
-                     <label htmlFor="name">Place Name</label>
+                     <label htmlFor="author">Author</label>
                      <input className="form-control"
-                        id="name"
-                        name="name"
-                        required
-                        defaultValue={body ? body.name : ''} />
+                        id="author"
+                        name="author" />
                   </div>
 
                </div>
                <div className='row padAll15'>
-                  <div className="form-group col-sm-6">
-                     <label htmlFor="pic">Place Photo</label>
-                     <input
-                        className="form-control"
-                        id="pic"
-                        name="pic"
-                        defaultValue={body ? body.pic : ''} />
-                  </div>
-                  <div className="form-group col-sm-6">
-                     <label htmlFor="pic">Place Photo Credit</label>
-                     <input
-                        className="form-control"
-                        id="picCredit"
-                        name="picCredit"
-                        defaultValue={body ? body.picCredit : ''} />
+                  <div className="form-group col-sm-12">
+                     <label htmlFor="content">Comment</label>
+                     <input className="form-control"
+                        id="content"
+                        name="content" />
                   </div>
                </div>
                <div className='row padAll15'>
                   <div className="form-group col-sm-6">
-                     <label htmlFor="city">City</label>
+                     <label htmlFor="stars">City</label>
                      <input className="form-control"
-                        id="city"
-                        name="city" 
-                        defaultValue={body ? body.city : ''} />
-                        
-                  </div>
-                  <div className="form-group col-sm-6">
-                     <label htmlFor="state">State</label>
-                     <input className="form-control"
-                        id="state"
-                        name="state"
-                        defaultValue={body ? body.state : ''} />
-                  </div>
-               </div>
-               <div className='row padAll15'>
-                  <div className="form-group col-sm-8">
-                     <label htmlFor="cuisines">Cuisines</label>
-                     <input className="form-control"
-                        id="cuisines"
-                        name="cuisines"
-                        required 
-                        defaultValue={body ? body.cuisines : ''}/>
-                  </div>
-
-                  <div className="form-group col-sm-4">
-                     <label for="founded">Founded Year</label>
-                     <input className="form-control"
+                        id="stars"
+                        name="stars"
                         type="number"
-                        id="founded"
-                        name="founded"
-                        defaultValue={body ? body.founded : (new Date().getFullYear())} />
+                        min={1}
+                        max={5}
+                        step={0.5} />
+                  </div>
+                  <div className="form-group col-sm-6">
+                     <label htmlFor="rant">Rant</label>
+                     <input className="form-control"
+                        id="rant"
+                        name="rant"
+                        type="checkbox"
+                        defaultChecked={false} />
                   </div>
                </div>
                <div className='buttons padAll15'>
-                  <input className="btn btn-primary" type="submit" value="Add Place" />
+                  <input className="btn btn-primary" type="submit" value="Add" />
                   <div>
-                     <a href={`/places`} className="btn btn-warning">
+                     <a href={`/places/${placeId}`} className="btn btn-warning">
                         Cancel
                      </a>
                   </div>
@@ -111,4 +68,4 @@ function newComment({ message, body }) {
 }
 
 
-module.exports = newPlace
+module.exports = newComment

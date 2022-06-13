@@ -139,9 +139,20 @@ router.delete('/:id', async (req, res) => {
 router.post('/:id/rant', async (req, res) => {
    const route = '/places/:id/rant (POST)';
    const id = req.params.id;
+   const body = req.body;
+
    trace(route)(id);
 
-   res.send(stub(route))
+   body.rant = body.rant ? true : false;
+   const foundPlace = await db.Place.findById(id);
+   const newComment = await db.Comment.create(body);
+   foundPlace.comments.push(newComment.id);
+   const savedPlace = await foundPlace.save();
+   res.redirect(`/places/${id}`);
+
+
+
+   // res.send(stub(JSON.stringify(body)))
 });
 
 // DELETE (RANT)
