@@ -56,6 +56,21 @@ footer {
    margin-right: auto;
 }
 
+.comment {
+   display: block;
+   float: left;
+   width: 250px;
+   height: 210px;
+   margin:5px;
+
+}
+
+.clearfix::after {
+   content: "";
+   clear: both;
+   display: table;
+ }
+
 .padAll10 {
    padding: 10px;
 }
@@ -89,7 +104,7 @@ footer {
 }
 
 .error {
-   color:red;
+   color: red;
    font-weight: bold;
    background-color: lightpink;
 }

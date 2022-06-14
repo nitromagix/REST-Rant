@@ -16,7 +16,7 @@ function show({ place }) {
    if (place.comments.length) {
       comments = place.comments.map(c => {
          return (
-            <div className="border padAll10">
+            <div className="border padAll10 comment">
                <h5 className="rant">{c.rant ? 'Rant!' : 'Rave!'}</h5>
                <p>{c.content}</p>
                <h5>
@@ -66,29 +66,34 @@ function show({ place }) {
                </div>
                <div className="form-group col-sm-1"></div>
             </div>
-            <div className='form-group col-sm-12 padAll 15'>
+            <div className='form-group col-sm-12 padAll10 clearfix'>
                <h4>Comments:</h4>
                {comments}
             </div>
-            <br />
+            {/* <br className='clearfix' /> */}
             <h4>Add Your Own Rant or Rave</h4>
             <form method="POST" action={`/places/${place.id}/rant`}>
+
                <div className='row padAll15'>
                   <div className="form-group col-sm-12">
                      <label htmlFor="author">Author</label>
                      <input className="form-control"
                         id="author"
-                        name="author" />
+                        name="author"
+                        type="text"
+                        maxLength={50}/>
                   </div>
 
                </div>
                <div className='row padAll15'>
                   <div className="form-group col-sm-12">
-                     <label htmlFor="content">Comment</label>
+                     <label htmlFor="content">Comment (maximum 150 characters)</label>
                      <input className="form-control"
                         id="content"
                         name="content"
-                        type='textarea' />
+                        type='textarea'
+                        maxLength={150}
+                        rows={3}/>
                   </div>
                </div>
                <div className='row padAll15'>
@@ -103,8 +108,8 @@ function show({ place }) {
                         step={0.5} />
                   </div>
                   <div className="form-group col-sm-4">
-                     <label htmlFor="rant">Rant?&nbsp;</label><br/>
-                     <input 
+                     <label htmlFor="rant">Rant?&nbsp;</label><br />
+                     <input
                         id="rant"
                         name="rant"
                         type="checkbox"
@@ -119,6 +124,7 @@ function show({ place }) {
                      </a>
                   </div>
                </div>
+
             </form>
          </main>
 
