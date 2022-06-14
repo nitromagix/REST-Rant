@@ -43,6 +43,11 @@ function show({ place }) {
                   <strong>- {c.author}</strong>
                </h5>
                <h6>Rating: {c.stars}</h6>
+
+               <form method="POST" action={`/places/${place.id}/rant/${c.id}?_method=DELETE`}>
+                  <input type="submit" className="btn btn-danger" value="Delete Comment" />
+               </form>
+
             </div>
          )
       })
@@ -66,7 +71,7 @@ function show({ place }) {
                   </h2>
                   <h4>Rating</h4>
                   <p className="text-center">
-                  <span dangerouslySetInnerHTML={{ __html: stars }} />
+                     <span dangerouslySetInnerHTML={{ __html: stars }} />
                   </p>
                   <h4>Description</h4>
                   <p>

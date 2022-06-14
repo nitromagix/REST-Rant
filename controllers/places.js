@@ -154,7 +154,8 @@ router.delete('/:id/rant/:rantId', async (req, res) => {
    const rantId = req.params.rantId;
    trace(route)(`id: ${id}, rantId:${rantId}`);
 
-   res.send(stub(route))
+   const deletedComment = await db.Comment.findByIdAndDelete(rantId);
+   res.status(303).redirect(`/places/${id}`)
 });
 
 module.exports = router
