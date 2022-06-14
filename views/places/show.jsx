@@ -13,7 +13,27 @@ function show({ place }) {
          No comments yet
       </p>
    )
-   if (place.comments.length) {
+   let rating = (
+      <p className='inactive'>
+         Not rated yet
+      </p>
+   )
+   const commentsLength = place.comments.length;
+   let stars = '';
+   if (commentsLength) {
+      const sumRatings = place.comments.reduce((tot, c) => {
+         return tot + c.stars
+      }, 0)
+      const averageRating = Math.round(sumRatings / commentsLength);
+
+      for (let i = 0; i < averageRating; i++) {
+         stars += '&#11088;&nbsp;'
+      }
+      rating = (
+         <p>
+            {averageRating} stars
+         </p>
+      )
       comments = place.comments.map(c => {
          return (
             <div className="border padAll10 comment">
@@ -45,7 +65,9 @@ function show({ place }) {
                      {place.name}
                   </h2>
                   <h4>Rating</h4>
-                  <p className="text-center">Not rated</p>
+                  <p className="text-center">
+                  <span dangerouslySetInnerHTML={{ __html: stars }} />
+                  </p>
                   <h4>Description</h4>
                   <p>
                      {place.showEstablished()}
@@ -81,7 +103,7 @@ function show({ place }) {
                         id="author"
                         name="author"
                         type="text"
-                        maxLength={50}/>
+                        maxLength={50} />
                   </div>
 
                </div>
@@ -93,7 +115,7 @@ function show({ place }) {
                         name="content"
                         type='textarea'
                         maxLength={150}
-                        rows={3}/>
+                        rows={3} />
                   </div>
                </div>
                <div className='row padAll15'>
