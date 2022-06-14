@@ -72,6 +72,7 @@ function edit_form({ place }) {
                   <div className="form-group col-sm-4">
                      <label for="founded">Founded Year</label>
                      <input className="form-control"
+                        type="number"
                         id="founded"
                         name="founded"
                         defaultValue={place.founded} />

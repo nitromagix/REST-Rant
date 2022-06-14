@@ -84,30 +84,24 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
    const route = '/places/:id (PUT)';
    const id = req.params.id
+   const body = req.body;
    trace(route)(id);
 
-   // let id = Number(req.params.id)
-   // if (isNaN(id)) {
-   //    res.render('error404')
-   // } else if (!places[id]) {
-   //    res.render('error404')
-   // } else {
-   //    // Dig into req.body and make sure data is valid
-   //    if (!req.body.pic) {
-   //       // Default image if one is not provided
-   //       req.body.pic = 'http://placekitten.com/400/400'
-   //    }
-   //    if (!req.body.city) {
-   //       req.body.city = 'Anytown'
-   //    }
-   //    if (!req.body.state) {
-   //       req.body.state = 'USA'
-   //    }
+   if (!body.pic) {
+      body.pic = undefined
+   }
+   if (!body.city) {
+      body.city = 'Anytown'
+   }
+   if (!body.state) {
+      body.state = 'USA'
+   }
 
-   //    // Save the new data into places[id]
-   //    places[id] = req.body
-   //    res.redirect(`/places/${id}`)
-   // }
+   const updatedPlace = await db.Place.findByIdAndUpdate(id, body, {
+      new: true
+   });
+   res.redirect(`/places/${id}`)
+
 });
 
 // RETRIEVE - EDIT
@@ -150,9 +144,6 @@ router.post('/:id/rant', async (req, res) => {
    const savedPlace = await foundPlace.save();
    res.redirect(`/places/${id}`);
 
-
-
-   // res.send(stub(JSON.stringify(body)))
 });
 
 // DELETE (RANT)

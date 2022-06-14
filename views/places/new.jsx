@@ -62,9 +62,9 @@ function newPlace({ message, body }) {
                      <label htmlFor="city">City</label>
                      <input className="form-control"
                         id="city"
-                        name="city" 
+                        name="city"
                         defaultValue={body ? body.city : ''} />
-                        
+
                   </div>
                   <div className="form-group col-sm-6">
                      <label htmlFor="state">State</label>
@@ -80,12 +80,12 @@ function newPlace({ message, body }) {
                      <input className="form-control"
                         id="cuisines"
                         name="cuisines"
-                        required 
-                        defaultValue={body ? body.cuisines : ''}/>
+                        required
+                        defaultValue={body ? body.cuisines : ''} />
                   </div>
 
                   <div className="form-group col-sm-4">
-                     <label for="founded">Founded Year</label>
+                     <label htmlFor="founded">Founded Year</label>
                      <input className="form-control"
                         type="number"
                         id="founded"
