@@ -10,7 +10,7 @@ function edit_form({ place }) {
    return (
       <Def>
          <main>
-            <h2>Edit Place</h2>
+            <h2>Edit - {place.name}</h2>
             <form method="POST" action={`/places/${place.id}?_method=PUT`}>
                <div className='row padAll15'>
                   <div className="form-group col-sm-12">

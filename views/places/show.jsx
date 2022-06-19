@@ -75,18 +75,24 @@ function show({ place }) {
                   <p><strong>Located in {place.city}, {place.state}</strong></p>
                </div>
                <div className="form-group col-sm-4 padAll15">
-                  <h4>Rating</h4>
-                  <p className="text-center">
-                     {rating}
-                  </p>
-                  <h4>Description</h4>
-                  <p>
-                     {place.showEstablished()}
-                  </p>
-                  <h4>Serving</h4>
-                  <p>
-                     {place.cuisines}
-                  </p>
+                  <div className='marginBottom30'>
+                     <h4>Rating</h4>
+                     <p className="text-center">
+                        {rating}
+                     </p>
+                  </div>
+                  <div className='marginBottom30'>
+                     <h4>Description</h4>
+                     <p>
+                        {place.showEstablished()}
+                     </p>
+                  </div>
+                  <div>
+                     <h4>Serving</h4>
+                     <p>
+                        {place.cuisines}
+                     </p>
+                  </div>
                   <form method="POST" action={`/places/${place.id}?_method=DELETE`}>
                      <div className='buttons'> <div>
                         <a href={`/places/${place.id}/edit`} className="btn btn-warning">Edit</a>

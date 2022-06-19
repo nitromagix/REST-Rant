@@ -97,6 +97,10 @@ footer {
    margin-left: 20px;
 }
 
+.marginBottom30 {
+   margin-bottom: 30px;
+}
+
 .borderBottom {
    border: 1px solid grey;
 }
