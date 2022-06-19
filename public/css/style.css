@@ -88,6 +88,11 @@ footer {
    padding-top: 10px;
 }
 
+.marginSides10 {
+   margin-left: 10px;
+   margin-right: 10px;
+}
+
 .marginLeft20 {
    margin-left: 20px;
 }

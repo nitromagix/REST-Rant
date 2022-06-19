@@ -32,7 +32,7 @@ function show({ place }) {
       }
       rating = (
          <p>
-             <span dangerouslySetInnerHTML={{ __html: stars }} />
+            <span dangerouslySetInnerHTML={{ __html: stars }} />
          </p>
       )
       comments = place.comments.map(c => {
@@ -53,10 +53,18 @@ function show({ place }) {
          )
       })
    }
-   {console.log(rating)}
+   { console.log(rating) }
    return (
       <Def>
          <main>
+            <div className='row textAlignCenter'>
+               <div className="form-group col-sm-12">
+                  <h2 >
+                     {place.name}
+                  </h2>
+                  <hr className='marginSides10' />
+               </div>
+            </div>
             <div className='row textAlignCenter'>
                <div className="form-group col-sm-1"></div>
                <div className="form-group col-sm-6 padAll15">
@@ -67,12 +75,9 @@ function show({ place }) {
                   <p><strong>Located in {place.city}, {place.state}</strong></p>
                </div>
                <div className="form-group col-sm-4 padAll15">
-                  <h2 className='border-bottom'>
-                     {place.name}
-                  </h2>
                   <h4>Rating</h4>
                   <p className="text-center">
-                    {rating}
+                     {rating}
                   </p>
                   <h4>Description</h4>
                   <p>
@@ -98,7 +103,7 @@ function show({ place }) {
                <h4>Comments:</h4>
                {comments}
             </div>
-            <hr />
+            <hr className='marginSides10' />
             <h4>Add Your Own Rant or Rave</h4>
             <form method="POST" action={`/places/${place.id}/rant`}>
 
