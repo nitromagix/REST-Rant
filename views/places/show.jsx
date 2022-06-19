@@ -18,20 +18,21 @@ function show({ place }) {
          Not rated yet
       </p>
    )
-   const commentsLength = place.comments.length;
+
    let stars = '';
-   if (commentsLength) {
+
+   if (place.comments.length > 0) {
       const sumRatings = place.comments.reduce((tot, c) => {
          return tot + c.stars
       }, 0)
-      const averageRating = Math.round(sumRatings / commentsLength);
+      const averageRating = Math.round(sumRatings / place.comments.length);
 
       for (let i = 0; i < averageRating; i++) {
          stars += '&#11088;&nbsp;'
       }
       rating = (
          <p>
-            {averageRating} stars
+             <span dangerouslySetInnerHTML={{ __html: stars }} />
          </p>
       )
       comments = place.comments.map(c => {
@@ -52,7 +53,7 @@ function show({ place }) {
          )
       })
    }
-
+   {console.log(rating)}
    return (
       <Def>
          <main>
@@ -63,15 +64,15 @@ function show({ place }) {
                      <img src={place.pic} alt={place.name}></img>
                      <span><sup>{place.picCredit}</sup></span>
                   </div>
-                  <h4>Located in {place.city}, {place.state}</h4>
+                  <p><strong>Located in {place.city}, {place.state}</strong></p>
                </div>
                <div className="form-group col-sm-4 padAll15">
-                  <h2>
+                  <h2 className='border-bottom'>
                      {place.name}
                   </h2>
                   <h4>Rating</h4>
                   <p className="text-center">
-                     <span dangerouslySetInnerHTML={{ __html: stars }} />
+                    {rating}
                   </p>
                   <h4>Description</h4>
                   <p>
@@ -97,7 +98,7 @@ function show({ place }) {
                <h4>Comments:</h4>
                {comments}
             </div>
-            {/* <br className='clearfix' /> */}
+            <hr />
             <h4>Add Your Own Rant or Rave</h4>
             <form method="POST" action={`/places/${place.id}/rant`}>
 

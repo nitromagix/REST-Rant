@@ -21,6 +21,10 @@ h2 {
    padding-top: 15px;
 }
 
+h4{
+   color: #B1740F;
+}
+
 footer {
    background-color: #1f3547 !important;
    color: #ffffff;
@@ -61,7 +65,7 @@ footer {
    float: left;
    width: 250px;
    height: 250px;
-   margin:5px;
+   margin: 5px;
 
 }
 
@@ -69,7 +73,7 @@ footer {
    content: "";
    clear: both;
    display: table;
- }
+}
 
 .padAll10 {
    padding: 10px;
@@ -88,7 +92,9 @@ footer {
    margin-left: 20px;
 }
 
-.buttons {}
+.borderBottom {
+   border: 1px solid grey;
+}
 
 .buttons>div,
 .buttons>button {
