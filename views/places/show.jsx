@@ -36,7 +36,7 @@ function show({ place }) {
       )
       comments = place.comments.map(c => {
          return (
-            <div className="border padAll10 comment">
+            <div className="border rounded padAll10 comment">
                <h5 className="rant">{c.rant ? 'Rant!' : 'Rave!'}</h5>
                <p>{c.content}</p>
                <h5>
