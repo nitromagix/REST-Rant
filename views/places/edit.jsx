@@ -6,7 +6,7 @@ const Def = require('../default.jsx')
 const { trace } = require('../../helper');
 
 function edit_form({ place }) {
-   trace(' | places/edit.jsx')('edit_form({place})');
+   // trace(' | places/edit.jsx')('edit_form({place})');
    return (
       <Def>
          <main>
@@ -70,7 +70,7 @@ function edit_form({ place }) {
                         required />
                   </div>
                   <div className="form-group col-sm-4">
-                     <label for="founded">Founded Year</label>
+                     <label htmlFor="founded">Founded Year</label>
                      <input className="form-control"
                         type="number"
                         id="founded"

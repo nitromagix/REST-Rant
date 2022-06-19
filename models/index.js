@@ -2,7 +2,6 @@
 
 const {
    trace,
-   stub
 } = require('../helper');
 
 const MONGO_URI = process.env.MONGO_URI;

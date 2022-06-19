@@ -5,8 +5,8 @@ const { trace } = require('../helper');
 const Def = require('./default');
 
 function error404({ params }) {
-   trace(' | error404.jsx')('error404({ params })')
-   trace(' | params')(params);
+   // trace(' | error404.jsx')('error404({ params })')
+   // trace(' | params')(params);
    return (
       <Def>
          <main>

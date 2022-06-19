@@ -7,7 +7,7 @@ const { trace } = require('../../helper');
 
 
 function newPlace({ message, body }) {
-   trace(' | places/new.jsx')('newPlace()');
+   // trace(' | places/new.jsx')('newPlace()');
    let displayMessage = ''
    if (message) {
       displayMessage = (

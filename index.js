@@ -26,21 +26,20 @@ app.get('/test', async (req, res) => {
 
 app.get('/', async (req, res) => {
    const route = '/ (GET)';
-   trace(route)(req.params);
-   trace(route)(req.query);
+   // trace(route)(req.params);
+   // trace(route)(req.query);
 
-   // res.send(stub(route));
    res.render('home');
 
 });
 
 app.get('*', async (req, res) => {
-   const route = '404 (GET)'
-   const params = req.params;
-   const query = req.query;
-   trace(route)('');
-   trace(' | params')(params);
-   trace(' | query')(query);
+   // const route = '404 (GET)'
+   // const params = req.params;
+   // const query = req.query;
+   // trace(route)('');
+   // trace(' | params')(params);
+   // trace(' | query')(query);
 
    // res.render('error404', {params: params});
    res.render('error404');

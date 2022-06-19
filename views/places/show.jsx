@@ -6,7 +6,7 @@ const Def = require('../default')
 const { trace } = require('../../helper');
 
 function show({ place }) {
-   trace(' | places/show.jsx')('show({place})');
+   // trace(' | places/show.jsx')('show({place})');
 
    let comments = (
       <p className="inactive">
@@ -36,7 +36,7 @@ function show({ place }) {
       )
       comments = place.comments.map(c => {
          return (
-            <div className="border rounded padAll10 comment">
+            <div key={c.id} className="border rounded padAll10 comment">
                <h5 className="rant">{c.rant ? 'Rant!' : 'Rave!'}</h5>
                <p>{c.content}</p>
                <h5>

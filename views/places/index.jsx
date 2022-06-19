@@ -6,11 +6,11 @@ const { trace } = require('../../helper');
 
 function index({ places }) {
 
-   trace(' | places/index.jsx')('index({places})');
+   // trace(' | places/index.jsx')('index({places})');
    
    const placesFormatted = places.map((place, index) => {
       return (
-         <div className="col-sm-6 place">
+         <div key={place.id} className="col-sm-6 place">
             <h2>
                <a href={`/places/${place.id}`} >
                   {place.name}
