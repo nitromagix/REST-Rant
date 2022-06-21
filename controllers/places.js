@@ -1,24 +1,44 @@
 const router = require('express').Router()
 const db = require('../models')
 
-// const places = require('../models/places');
+const Places_Seed = require('../models/data/places_seed')
+const Comments_Seed = require('../models/data/comments_seed')
 
 const {
    trace,
    stub
 } = require('../helper');
 
-// RETRIEVE - INDEX
+// SEED PLACES
 
-router.get('/', async (req, res) => {
-   // const route = '/places (GET)';
-   // trace(route)('');
+router.get('/data/seedPlaces', async (req, res) => {
+   const params = req.params;
+   trace('/data/seedPlaces (GET)')(params);
+   const places = Places_Seed;
+   await db.Place.insertMany(places);
+   res.redirect('/places');
+})
 
-   const places = await db.Place.find();
-   res.render('places/index', {
-      places
-   });
-});
+// SEED COMMENTS (H-Thai-ML)
+
+// router.get('/data/seedComments', async (req, res) => {
+//    const params = req.params;
+//    trace('/data/seedComments (GET)')(params);
+
+//    const commentSeed = Comments_Seed;
+//    let comment = await db.Comment.create(commentSeed)
+//    console.log(comment);
+
+//    const place = await db.Place.findOne({
+//       name: 'H-Thai-ML'
+//    })
+//    place.comments.push(comment.id)
+//    trace('comment id')(comment.id);
+
+//    // await place.save()
+
+//    res.redirect(`/places/${place.id}`);
+// })
 
 // CREATE - NEW (PLACE)
 
@@ -79,6 +99,31 @@ router.get('/:id', async (req, res) => {
    });
 });
 
+// RETRIEVE - INDEX
+
+router.get('/', async (req, res) => {
+   // const route = '/places (GET)';
+   // trace(route)('');
+
+   const places = await db.Place.find();
+   res.render('places/index', {
+      places
+   });
+});
+
+// RETRIEVE - EDIT
+
+router.get('/:id/edit', async (req, res) => {
+   // const route = '/places/:id/edit (GET)';
+   const id = req.params.id
+   // trace(route)(id);
+
+   const foundPlace = await db.Place.findById(id);
+   res.render('places/edit', {
+      place: foundPlace
+   })
+});
+
 // UPDATE
 
 router.put('/:id', async (req, res) => {
@@ -104,19 +149,6 @@ router.put('/:id', async (req, res) => {
 
 });
 
-// RETRIEVE - EDIT
-
-router.get('/:id/edit', async (req, res) => {
-   // const route = '/places/:id/edit (GET)';
-   const id = req.params.id
-   // trace(route)(id);
-
-   const foundPlace = await db.Place.findById(id);
-   res.render('places/edit', {
-      place: foundPlace
-   })
-});
-
 // DELETE (PLACE)
 
 router.delete('/:id', async (req, res) => {
@@ -133,9 +165,9 @@ router.delete('/:id', async (req, res) => {
 router.post('/:id/rant', async (req, res) => {
    // const route = '/places/:id/rant (POST)';
    const id = req.params.id;
-   // const body = req.body;
+   const body = req.body;
 
-   trace(route)(id);
+   // trace(route)(id);
 
    body.rant = body.rant ? true : false;
    const foundPlace = await db.Place.findById(id);
